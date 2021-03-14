@@ -19,7 +19,7 @@ async function addUser(msg) {
 
             // user does not exist: add user
             if (!doc) {
-                console.log("Adding " + user.username + " to the database")
+                
                 let userDocument = new User({ _id: user.id, username: user.username });
 
                 userDocument.save()
@@ -46,7 +46,6 @@ async function removeUser(msg) {
  
              // user exists: remove user
              if (doc) {
-                 console.log("Removing " + user.username + " from the database")
                  User.deleteOne({ _id: user.id })
                     .then(() => {
                         console.log("Successfully deleted " + user.username + " from the database")
@@ -63,11 +62,9 @@ async function removeUser(msg) {
              }
          })
 }
-User.deleteOn
-
 
 module.exports = {
     initDB,
     addUser,
-    removeUser
+    removeUser,
 }
