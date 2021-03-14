@@ -1,0 +1,30 @@
+{
+  "name": "eventinviterbot",
+  "version": "1.0.0",
+  "description": "A Discord bot for creating invites to events.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaktaw/EventInviterBot.git"
+  },
+  "keywords": [
+    "Discord",
+    "Bot",
+    "Node.js",
+    "Discord.js",
+    "Event",
+    "Invite"
+  ],
+  "author": "Zakaria Karlsen Tawfiq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaktaw/EventInviterBot/issues"
+  },
+  "homepage": "https://github.com/zaktaw/EventInviterBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
