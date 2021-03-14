@@ -48,7 +48,11 @@ async function removeUser(msg) {
              if (doc) {
                  console.log("Removing " + user.username + " from the database")
                  User.deleteOne({ _id: user.id })
-                    .then(a => console.log("Successfully deleted " + user.username + " from the database"))
+                    .then(() => {
+                        console.log("Successfully deleted " + user.username + " from the database")
+                        User.find({}).lean()   
+                            .then(users => admin.updateEmbed(users, msg))
+                    })
                     .catch(err => console.log(err))
              }
  
