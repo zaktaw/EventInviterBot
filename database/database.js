@@ -1,5 +1,6 @@
 const User = require('./schema.js');
 const mongoose = require('mongoose');
+const admin = require('../admin.js');
 mongoose.connect('mongodb://localhost:27017/EventInviteBot', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 
@@ -18,11 +19,15 @@ async function addUser(msg) {
 
             // user does not exist: add user
             if (!doc) {
-                console.log("user " + user.username + " does not exist")
+                console.log("Adding " + user.username + " to the database")
                 let userDocument = new User({ _id: user.id, username: user.username });
 
                 userDocument.save()
-                    .then(doc => console.log(`Sucessfully added user: ${doc}`))
+                    .then(doc => {
+                        console.log(`Sucessfully added user: ${doc}`)
+                        User.find({}).lean()   
+                            .then(users => admin.updateEmbed(users, msg))
+                    });
             }
 
             // user exists
@@ -33,9 +38,32 @@ async function addUser(msg) {
         })
 }
 
+async function removeUser(msg) {
+     // find user in database
+     let user = msg.author;
+     await User.findById({ _id: user.id })
+         .then(doc => {
+ 
+             // user exists: remove user
+             if (doc) {
+                 console.log("Removing " + user.username + " from the database")
+                 User.deleteOne({ _id: user.id })
+                    .then(a => console.log("Successfully deleted " + user.username + " from the database"))
+                    .catch(err => console.log(err))
+             }
+ 
+             // user does not exist
+             else {
+                 msg.reply("You have already left the event")
+                     .then(msg.delete({ timeout: 5000 }))
+             }
+         })
+}
+User.deleteOn
 
 
 module.exports = {
     initDB,
-    addUser
+    addUser,
+    removeUser
 }

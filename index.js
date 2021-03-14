@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require('./testingConfig.json');
 const database = require('./database/database.js');
+const admin = require('./admin.js');
 
 
 bot.on('ready', () => {
@@ -35,6 +36,22 @@ bot.on('message', (msg) => {
 
         case 'join':
             database.addUser(msg);
+            break;
+
+        case 'unjoin':
+            database.removeUser(msg)
+            break;
+
+        case 'embed':
+            // Only admins can this command
+            if (!msg.member.hasPermission('ADMINISTRATOR')) {
+                msg.channel.send("You have to be an administrator to use this bot");
+                return;
+            }
+
+         
+            admin.sendEmbed(msg);
+            msg.delete();
             break;
             
         default :

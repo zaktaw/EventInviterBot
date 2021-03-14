@@ -3,6 +3,7 @@
     "description": "Some description",
     "color": "0xFF9400",
     "fields": [
-        {"header": "", "body": ""}
+        {"header": "Field 1", "body": "Text for field 1"},
+        {"header": "Field 1", "body": "some mrore text"}
     ]
 }
