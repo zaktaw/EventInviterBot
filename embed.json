@@ -1,0 +1,8 @@
+{
+    "title": "Title",
+    "description": "Some description",
+    "color": "0xFF9400",
+    "fields": [
+        {"header": "", "body": ""}
+    ]
+}
