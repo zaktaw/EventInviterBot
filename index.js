@@ -1,9 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const config = require('./testingConfig.json');
 const database = require('./database/database.js');
 const admin = require('./admin.js');
-
 
 bot.on('ready', () => {
     console.log("Bot is online!");
@@ -14,17 +12,17 @@ bot.on('rateLimit', (rateLimitInfo) => {
     console.log(rateLimitInfo)
 });
 
-bot.login(config.token);
+bot.login(process.env.EVENT_INVITER_BOT_TOKEN);
 database.initDB()
 
 bot.on('message', (msg) => {
 
-    let args = msg.content.substring(config.prefix.length).split(" ");
+    let args = msg.content.substring(process.env.EVENT_INVITER_BOT_PREFIX.length).split(" ");
 
     // Prevent spam from bot
     if (msg.author.bot) return; // stops bot from replying to itself
     if (!msg.guild) return; // bot will only reply if message is sent in the guild (server)
-    if (!msg.content.startsWith(config.prefix)) return; // bot will only reply if the message starts with the specified prefix
+    if (!msg.content.startsWith(process.env.EVENT_INVITER_BOT_PREFIX)) return; // bot will only reply if the message starts with the specified prefix
 
     // Handle arguments given
     switch (args[0].toLowerCase()) {
