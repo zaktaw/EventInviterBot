@@ -1,9 +1,13 @@
 {
-    "title":"Title",
+    "title":"Invitasjon til fest-rulett 10.04.2021",
     "description":"Some description",
     "color":"0xFF9400",
     "fields": [
-        {"header":"Field 1", "body":"Text for field 1"},
-        {"header":"Field 1", "body":"some mrore text"}
+        {"header":"Hva?", "body":"Fest-rulett er en digital fest som foregår på Discord. Festdeltakerne blir plassert i voice-chat-kanaler sammen med 2-4 andre deltakere. Det er tilfeldig hvem man kommer med og hvert kvarter blir man automatisk plassert i en annen kanal. Kl 23 åpner 'byen' som gjør at voice-chat-kanalene blir åpne for alle og den automatiske rulleringen avsluttes."},
+        {"header":"Når?", "body":"Lørdag 10.04.2021 19:00"},
+        {"header":"Hvor?", "body":"Her på Fest-rulett-serveren på Discord"},
+        {"header":"Hvordan bli med?", "body":"For å bli med skriv JOIN i chatten under. Dette gjør at du får rollen 'Festdeltaker' som gir deg tilgang til å se kanalene på serveren. Dette setter også brukernavnet ditt opp på gjestelista under. Skriv gjerne JOIN så fort du har bestemt deg for å bli med, så vi alle kan se hvor mange som tenker å være med. Når arrangementet starter er det bare å hoppe inn voice-chat-kanalen 'Inngangspartiet' som ligger i kategorien 'Vors'."},
+        {"header":"Hvorfor?", "body": "Topp stemning!"},
+        {"header":"Hvem?", "body":"Fest-rulett-arrangementet er åpent for alle som vil være med. Inviter gjerne dine venner! Forrige gang var ca. 40 deltakere med på det meste. Under vises det hvem som blir med denne gangen"}
     ]
 }
