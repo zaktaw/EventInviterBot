@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const fs = require('fs'); 
 const embedJson = require('./embed.json');
+const config = require('./config.json');
 
 // updates the guest list with the new user list
 function updateEmbed(users, msg) {
@@ -45,8 +46,24 @@ async function sendEmbed(msg) {
         });
 }
 
+function addRole(msg) {
+    // let guild = await bot.guilds.fetch(config.serverID)
+    // let member = await guild.members.fetch(msg.author.id)
+    msg.guild.members.fetch(msg.author.id)
+        .then(member => member.roles.add(config.roleID))
+}
+
+function removeRole(msg) {
+    // let guild = await bot.guilds.fetch(config.serverID)
+    // let member = await guild.members.fetch(msg.author.id)
+    msg.guild.members.fetch(msg.author.id)
+        .then(member => member.roles.remove(config.roleID))
+}
+
 module.exports = {
     makeEmbed,
     updateEmbed,
-    sendEmbed
+    sendEmbed,
+    addRole,
+    removeRole
 }
