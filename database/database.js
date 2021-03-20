@@ -23,7 +23,7 @@ async function addUser(msg) {
                 let userDocument = new User({ _id: user.id, username: user.username });
 
                 userDocument.save()
-                    .then(doc => {
+                    .then(() => {
                         console.log(`Sucessfully added user: ${user.username}`)
 
                         // get all users and update embed
@@ -35,7 +35,7 @@ async function addUser(msg) {
             // user exists
             else {
                 msg.reply("You have already joined the event")
-                    .then(msg.delete({ timeout: 5000 }))
+                    .then(message => message.delete({ timeout: 5000 }))
             }
         })
 }
@@ -62,7 +62,7 @@ async function removeUser(msg) {
              // user does not exist
              else {
                  msg.reply("You have already left the event")
-                     .then(msg.delete({ timeout: 5000 }))
+                     .then(message => message.delete({ timeout: 5000 }))
              }
          })
 }
@@ -73,6 +73,7 @@ async function deleteAll(msg) {
         .then(() => {
             console.log("Successfully deleted all users")
             msg.channel.send("Successfully deleted all users")
+                .then(message => message.delete({ timeout: 5000 }))
 
             // get all users and update embed
             User.find({}).lean() 

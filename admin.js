@@ -46,16 +46,14 @@ async function sendEmbed(msg) {
         });
 }
 
+// assigns the specified in the config role to the author of the message
 function addRole(msg) {
-    // let guild = await bot.guilds.fetch(config.serverID)
-    // let member = await guild.members.fetch(msg.author.id)
     msg.guild.members.fetch(msg.author.id)
         .then(member => member.roles.add(config.roleID))
 }
 
+// unassigns the specified in the config role to the author of the message
 function removeRole(msg) {
-    // let guild = await bot.guilds.fetch(config.serverID)
-    // let member = await guild.members.fetch(msg.author.id)
     msg.guild.members.fetch(msg.author.id)
         .then(member => member.roles.remove(config.roleID))
 }

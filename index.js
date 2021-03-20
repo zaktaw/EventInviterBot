@@ -23,7 +23,7 @@ bot.on('message', (msg) => {
     // Prevent spam from bot
     if (msg.author.bot) return; // stops bot from replying to itself
     if (!msg.guild) return; // bot will only reply if message is sent in the guild (server)
-    if (!msg.channel.id == config.channelID) return; // bot will only reply in the channel with id identical to the channelID specified in the config file
+    if (msg.channel.id != config.channelID) return; // bot will only reply in the channel with id identical to the channelID specified in the config file
 
     // Handle arguments given
     switch (args[0].toLowerCase()) {
@@ -31,18 +31,19 @@ bot.on('message', (msg) => {
         case 'test':
             msg.channel.send("EventInviterBot is working")
                 .then(message => message.delete({ timeout: 5000 })); // delete message after 5 seconds
+            msg.delete({ timeout: 5000 });
             break;
 
         case 'join':
             admin.addRole(msg)
             database.addUser(msg);
-            msg.delete()
+            msg.delete({ timeout: 5000 });
             break;
 
         case 'unjoin':
             admin.removeRole(msg)
             database.removeUser(msg)
-            msg.delete()
+            msg.delete({ timeout: 5000 })
             break;
 
         case 'embed':
@@ -50,12 +51,12 @@ bot.on('message', (msg) => {
             if (!msg.member.hasPermission('ADMINISTRATOR')) {
                 msg.channel.send("You have to be an administrator to use this bot")
                     .then(message => message.delete({ timeout:5000 }))
-                msg.delete();
+                msg.delete({ timeout: 5000 });
                 return;
             }
          
             admin.sendEmbed(msg);
-            msg.delete();
+            msg.delete({ timeout: 5000 });
             break;
 
         case 'deleteall':
@@ -63,18 +64,18 @@ bot.on('message', (msg) => {
             if (!msg.member.hasPermission('ADMINISTRATOR')) {
                 msg.channel.send("You have to be an administrator to use this bot")
                     .then(message => message.delete({ timeout:5000 }));
-                msg.delete()
+                msg.delete({ timeout: 5000 })
                 return;
             }
 
             database.deleteAll(msg)
-            msg.delete()
+            msg.delete({ timeout: 5000 })
             break;
 
             
         default :
             msg.channel.send(`"${args[0]}" is an invalid command.`)
                 .then(message => message.delete({ timeout:5000 }))
-            msg.delete()
+            msg.delete({ timeout: 5000 })
     }   
 });
