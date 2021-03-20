@@ -49,7 +49,7 @@ bot.on('message', (msg) => {
         case 'embed':
             // Only admins can this command
             if (!msg.member.hasPermission('ADMINISTRATOR')) {
-                msg.channel.send("You have to be an administrator to use this bot")
+                msg.channel.send("You have to be an administrator to use this command")
                     .then(message => message.delete({ timeout:5000 }))
                 msg.delete({ timeout: 5000 });
                 return;
@@ -62,7 +62,7 @@ bot.on('message', (msg) => {
         case 'deleteall':
             // Only admins can this command
             if (!msg.member.hasPermission('ADMINISTRATOR')) {
-                msg.channel.send("You have to be an administrator to use this bot")
+                msg.channel.send("You have to be an administrator to use this command")
                     .then(message => message.delete({ timeout:5000 }));
                 msg.delete({ timeout: 5000 })
                 return;
