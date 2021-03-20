@@ -12,7 +12,7 @@ function updateEmbed(users, msg) {
     let updatedEmbed = makeEmbed()
     updatedEmbed.addField(`Guest list (${users.length})`, usersString.length > 0 ? usersString : "No one has joined the event yet")
 
-    msg.channel.messages.fetch(embedJson.id)
+    msg.channel.messages.fetch(config.embedID)
         .then(embed => embed.edit(updatedEmbed))
         .catch(err => console.error(err))
 }
@@ -38,11 +38,11 @@ async function sendEmbed(msg) {
     let embed = makeEmbed();
     msg.channel.send(embed)
         .then(msg => {
-            // update the embedID in the embed.json file with the ID of the sent embed
-            let embedID_json_file = embedJson;
-            embedID_json_file.id = msg.id;
-            embedID_json_file = JSON.stringify(embedID_json_file);
-            fs.writeFileSync('./embed.json', embedID_json_file);
+            // update the embedID in the config file with the ID of the sent embed
+            let configUpdated = config;
+            configUpdated.embedID = msg.id;
+            configUpdated = JSON.stringify(configUpdated);
+            fs.writeFileSync('./config.json', configUpdated);
         });
 }
 
