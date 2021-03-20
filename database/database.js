@@ -24,7 +24,9 @@ async function addUser(msg) {
 
                 userDocument.save()
                     .then(doc => {
-                        console.log(`Sucessfully added user: ${doc}`)
+                        console.log(`Sucessfully added user: ${user.username}`)
+
+                        // get all users and update embed
                         User.find({}).lean()   
                             .then(users => admin.updateEmbed(users, msg))
                     });
@@ -48,9 +50,11 @@ async function removeUser(msg) {
              if (doc) {
                  User.deleteOne({ _id: user.id })
                     .then(() => {
-                        console.log("Successfully deleted " + user.username + " from the database")
+                        console.log("Successfully deleted user: " + user.username)
+
+                        // get all users and update embed
                         User.find({}).lean()   
-                            .then(users => admin.updateEmbed(users, msg))
+                            .then(users => admin.updateEmbed(users, msg)) 
                     })
                     .catch(err => console.log(err))
              }
@@ -63,8 +67,26 @@ async function removeUser(msg) {
          })
 }
 
+// deletes all items in the database
+async function deleteAll(msg) {
+    User.deleteMany({}) // {} = all documents
+        .then(() => {
+            console.log("Successfully deleted all users")
+            msg.channel.send("Successfully deleted all users")
+
+            // get all users and update embed
+            User.find({}).lean() 
+                .then(users => admin.updateEmbed(users, msg))
+        })
+        .catch(err => {
+            console.error(err)
+            msg.channel.send("Error: unable to delete all users")
+        });
+}
+
 module.exports = {
     initDB,
     addUser,
     removeUser,
+    deleteAll
 }

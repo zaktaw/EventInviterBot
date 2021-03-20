@@ -48,13 +48,25 @@ bot.on('message', (msg) => {
                 msg.channel.send("You have to be an administrator to use this bot");
                 return;
             }
-
          
             admin.sendEmbed(msg);
             msg.delete();
             break;
+
+        case 'deleteall':
+            // Only admins can this command
+            if (!msg.member.hasPermission('ADMINISTRATOR')) {
+                msg.channel.send("You have to be an administrator to use this bot");
+                return;
+            }
+
+            database.deleteAll(msg)
+            break;
+
             
         default :
             msg.channel.send(`"${args[0]}" is an invalid command.`);
     }   
+
+    msg.delete({ timeout: 5000 })
 });
