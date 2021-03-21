@@ -10,7 +10,7 @@ function updateEmbed(users, msg) {
     for (let i=1; i<users.length; i++) usersString += ", " + users[i].username
     
     let updatedEmbed = makeEmbed()
-    updatedEmbed.addField(`Guest list (${users.length})`, usersString.length > 0 ? usersString : "No one has joined the event yet")
+    updatedEmbed.addField(`Gjesteliste (${users.length})`, usersString.length > 0 ? usersString : "Ingen har blitt med på arrangementet enda")
 
     msg.channel.messages.fetch(config.embedID)
         .then(embed => embed.edit(updatedEmbed))

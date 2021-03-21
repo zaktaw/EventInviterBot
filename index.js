@@ -35,13 +35,13 @@ bot.on('message', (msg) => {
             break;
 
         case 'join':
-            admin.addRole(msg)
+            //admin.addRole(msg)
             database.addUser(msg);
             msg.delete({ timeout: 5000 });
             break;
 
         case 'unjoin':
-            admin.removeRole(msg)
+            //admin.removeRole(msg)
             database.removeUser(msg)
             msg.delete({ timeout: 5000 })
             break;
