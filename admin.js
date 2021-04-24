@@ -7,7 +7,7 @@ const config = require('./config.json');
 function updateEmbed(users, msg) {
     let usersString = String()
     if (users.length > 0) usersString += users[0].username
-    for (let i=1; i<users.length; i++) usersString += ", " + users[i].username
+    for (let i=1; i<users.length; i++) usersString += "\n" + users[i].username
     
     let updatedEmbed = makeEmbed()
     updatedEmbed.addField(`Gjesteliste (${users.length})`, usersString.length > 0 ? usersString : "Ingen har blitt med på arrangementet enda")

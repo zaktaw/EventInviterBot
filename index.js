@@ -36,7 +36,7 @@ bot.on('message', (msg) => {
 
         case 'join':
             //admin.addRole(msg)
-            database.addUser(msg);
+            database.addUser(msg, bot);
             msg.delete({ timeout: 5000 });
             break;
 

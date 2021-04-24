@@ -1,6 +1,8 @@
 const User = require('./schema.js');
-const mongoose = require('mongoose');
 const admin = require('../admin.js');
+const config = require('../config.json');
+
+const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/EventInviteBot', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 
@@ -11,16 +13,23 @@ function initDB() {
   });
 }
 
-async function addUser(msg) {
+async function addUser(msg, bot) {
     // find user in database
     let user = msg.author;
+
     await User.findById({ _id: user.id })
-        .then(doc => {
+        .then(async doc => {
 
             // user does not exist: add user
             if (!doc) {
                 
-                let userDocument = new User({ _id: user.id, username: user.username });
+                let guild = await bot.guilds.cache.filter(guild => guild.id == config.guildID).get(config.guildID);
+                let guildMember = await guild.members.fetch(user.id);
+                let username = user.username;
+                let displayName = guildMember.displayName;
+                displayName = displayName != username ? displayName : null // set displayName to null if it is identical to the username
+
+                let userDocument = new User({ _id: user.id, username: `${username} ${displayName ? ' (' + displayName + ')' : ''}` });
 
                 userDocument.save()
                     .then(() => {

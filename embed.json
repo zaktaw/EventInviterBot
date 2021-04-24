@@ -1,13 +1,13 @@
 {
-    "title":"Invitasjon til fest-rulett 10.04.2021",
-    "description":"Bli med på en ny runde fest-rulett 10.04.2021! Kan garantere at det blir god stemning 🥳 Under står det kort forklart om hva arrangementet dreier seg om. Du kan lese mer detaljert informasjon om arrangementet i tekst-kanalen 'Informasjon'.",
+    "title":"Invitasjon til fest-rulett 08.05.2021",
+    "description":"Bli med på en ny runde fest-rulett lørdag 08.05.2021! Kan garantere at det blir god stemning 🥳 Under står det kort forklart om hva arrangementet dreier seg om. Du kan lese mer detaljert informasjon om arrangementet i tekst-kanalen 'Informasjon'.",
     "color":"0xFF9400",
     "fields": [
         {"header":"Hva?", "body":"Fest-rulett er en digital fest som foregår på Discord. Festdeltakerne blir plassert i voice-chat-kanaler som består av 3-5 deltakere. Det er tilfeldig hvem man kommer med og hvert kvarter blir man automatisk plassert i en annen kanal. Kl 23 åpner 'byen' som gjør at voice-chat-kanalene blir åpne for alle og den automatiske rulleringen avsluttes."},
-        {"header":"Når?", "body":"Lørdag 10.04.2021, kl 19:00"},
+        {"header":"Når?", "body":"Lørdag 08.05.2021, kl 19:00"},
         {"header":"Hvor?", "body":"Her på Fest-rulett-serveren på Discord"},
         {"header":"Hvordan bli med?", "body":"Skriv JOIN i chatten under for å sette deg opp i gjestelista. Gjestelista har ingen annen funksjon enn å vise hvem som tenker å være med på arrangementet, hvis du ikke vil stå oppført i gjestelista går det helt fint an å bli med på arrangementet uten å gjøre det. For å fjerne deg fra gjestelista, skriv UNJOIN i chatten under. Når arrangementet har startet er det bare å hoppe inn i voice-chat-kanalen 'Inngangspartiet' under kategorien 'Vors'."},
         {"header":"Hvorfor?", "body": "Topp stemning!"},
-        {"header":"Hvem?", "body":"Fest-rulett-arrangementet er åpent for alle som vil være med. Inviter gjerne dine venner! Forrige gang var ca. 40 deltakere med på det meste."}
+        {"header":"Hvem?", "body":"Fest-rulett-arrangementet er åpent for alle som vil være med. Inviter gjerne dine venner! Forrige gang var ca. 30 deltakere med på det meste."}
     ]
 }
