@@ -3,6 +3,7 @@ const bot = new Discord.Client();
 const config = require('./config.json');
 const database = require('./database/database.js');
 const admin = require('./admin.js');
+const roleAssigning = require('./roleAssigning/roleAssigning');
 
 bot.on('ready', () => {
     console.log("Bot is online!");
@@ -23,6 +24,15 @@ bot.on('message', (msg) => {
     // Prevent spam from bot
     if (msg.author.bot) return; // stops bot from replying to itself
     if (!msg.guild) return; // bot will only reply if message is sent in the guild (server)
+
+    if (args[0].toLowerCase() == 'notify' && msg.member.hasPermission('ADMINISTRATOR')) {
+        roleAssigning.notifyRole(msg);
+    }
+
+    if (args[0].toLowerCase() == 'init' && msg.member.hasPermission('ADMINISTRATOR')) {
+        roleAssigning.initCollectors(bot);
+    }
+
     if (msg.channel.id != config.channelID) return; // bot will only reply in the channel with id identical to the channelID specified in the config file
 
     // Handle arguments given
